@@ -1,3 +1,41 @@
+body {
+  margin: 0;
+  margin-top: 10px;
+  font-family: arial, sans-serif;
+}
+.navigation {
+  width: 100%;
+  height: 40px;
+  background-color: #eee;
+}
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation li a {
+  float: left;
+  height: 20px;
+  width: 100px;
+  line-height: 20px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+.navigation li a:hover {
+  background-color: #ddd;
+}
+
+.navigation li :selected {
+  background-color: #ccc;
+}
+
+div {
+  display: block;
+}
+
 h1 {
   color: indigo;
 }

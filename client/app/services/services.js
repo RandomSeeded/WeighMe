@@ -1,16 +1,16 @@
 angular.module('weighMe.services', []) 
 .factory('Weights', function($http) {
-  var postWeights = function(weight) {
+  var postWeight = function(weight) {
     return $http({
       method: 'POST',
       url: '/api/weights',
-      data: { weights: weight }
+      data: { weight: weight }
     }).then(function (resp) {
       return resp.data;
     });
   }
   return {
-    postWeights: postWeights
+    postWeight: postWeight
   }
 });
 

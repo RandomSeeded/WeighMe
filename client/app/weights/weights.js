@@ -7,7 +7,7 @@ angular.module('weighMe.weights', [])
     $scope.addWeight = function(newWeight) {
       $scope.data.items.push(newWeight);
       // Add code which communicates this to the server here
-      Weights.postWeights($scope.data.items);
+      Weights.postWeight(newWeight);
     };
     $scope.removeWeight = function(item) {
       var idx = $scope.data.items.indexOf(item);

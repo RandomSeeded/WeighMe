@@ -1,0 +1,9 @@
+<div ng-controller="weightController">
+  <form name='weightForm'>
+    <input type='number' ng-model="newWeight"/>
+    <input type='submit' ng-click="addWeight(newWeight)"/>
+  </form>
+  <ul>
+    <li ng-repeat="item in data.items track by $index" ng-click="removeWeight(item)"> {{item}} </li>
+  </ul>
+</div>

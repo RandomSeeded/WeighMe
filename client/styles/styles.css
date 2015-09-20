@@ -28,7 +28,7 @@ body {
   background-color: #ddd;
 }
 
-.navigation li :selected {
+.navigation li a.selected {
   background-color: #ccc;
 }
 

@@ -1,6 +1,6 @@
-<form>
-  <input type='text' placeholder="Username" />
-  <input type='text' placeholder="Password" />
+<form ng-submit="signin()">
+  <input type='text' placeholder="username" ng-model="user.username"/>
+  <input type='text' placeholder="password" ng-model="user.password"/>
   <input type='submit' />
 </form>
 

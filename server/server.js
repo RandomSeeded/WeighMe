@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname,'../client')));
 
 var port = 4568;
 app.get('/api/weights', function(req, res) {
-  console.log(req.sessionID);
   Weight.find({sessionID: req.sessionID}, function(err, result) {
     if (err) { console.log(err); }
     res.status(200).send(result);
@@ -26,14 +25,31 @@ app.get('/api/weights', function(req, res) {
 });
 
 app.post('/api/weights', function(req, res) {
-  console.log(req.body);
-  var myWeight = new Weight({weight: req.body.weight, sessionID: req.sessionID}/*{weight: req.body, sessionID: req.sessionID}*/);
-  /*User.find({sessionID: req.sessionID}, function(err, result) {
+  var myWeight = new Weight({weight: req.body.weight, sessionID: req.sessionID});
+  // Get user data for this weight entry
+  User.find({sessionID: req.sessionID}, function(err, result) {
     if (err) { console.log(err); }
-    console.log(result);
-  });*/
+  });
+
+  // Add the weight entry to the weights collection
   myWeight.save(function(err) { if (err) { console.log('err', err); } });
   res.status(200).send("Functionality to be added later");
+});
+
+app.post('/api/users', function(req, res) {
+  // Check if user already exists
+  User.find({username: req.body.username}, function(err, results) {
+    if (err) { console.log('e',err);
+    } else if (results.length !== 0) { 
+      res.redirect('/#/signup');
+    } else {
+      var myUser = new User({username: req.body.username, password: req.body.password, sessionID: req.sessionID});
+      myUser.save(function(err) { 
+        if (err) { console.log(err) } 
+      });
+      //res.send(200, "Signed Up");
+    }
+  });
 });
 
 console.log('Shortly is listening on port '+port);

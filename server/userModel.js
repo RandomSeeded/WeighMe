@@ -28,7 +28,6 @@ userSchema.pre('save', function(next) {
     user.password = hash;
     return next();
   });
-  return next();
 });
 
 module.exports = mongoose.model('User', userSchema);

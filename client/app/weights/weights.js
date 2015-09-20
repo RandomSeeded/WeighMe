@@ -5,15 +5,14 @@ angular.module('weighMe.weights', [])
     };
 
     $scope.getWeights = function() {
-      console.log('getting weights');
       Weights.getWeights()
         .then(function(result) {
-          console.log('result',result);
           var mapped = result.map(function(item) {
             return item.weight;
           });
           $scope.data.items = mapped;
-        });
+        })
+        .catch(function(err) { console.log(err); });
     };
 
     $scope.addWeight = function(newWeight) {

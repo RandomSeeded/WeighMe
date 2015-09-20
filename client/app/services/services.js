@@ -4,7 +4,7 @@ angular.module('weighMe.services', [])
     return $http({
       method: 'POST',
       url: '/api/weights',
-      data: { url: url }
+      data: { weights: weight }
     }).then(function (resp) {
       return resp.data;
     });

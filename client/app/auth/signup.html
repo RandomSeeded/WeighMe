@@ -1,7 +1,7 @@
 <form ng-submit="signup()">
   <input type='text' placeholder="username" ng-model="user.username" ng-unique="true"/>
-  <input type='text' placeholder="password" ng-model="user.password"/>
+  <input type='password' placeholder="password" ng-model="user.password"/>
   <input type='submit' />
-  <div class="help-msg-bad" ng-show="displayUserTaken()">Username already in use</div>
-  <div class="help-msg-good" ng-show="displayUserCreated()">Account created!</div>
+  <div class="help-msg bad" ng-show="displayUserTaken()">Username already in use</div>
+  <div class="help-msg good" ng-show="displayUserCreated()">Account created!</div>
 </form>

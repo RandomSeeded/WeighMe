@@ -12,7 +12,7 @@ angular.module('weighMe.services', [])
       url: '/api/users',
       data: { username: username, password: password }
     }).then(function(resp) {
-      return resp.data;
+      return resp;
     });
   };
 

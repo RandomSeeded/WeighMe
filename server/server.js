@@ -44,10 +44,9 @@ app.post('/api/users', function(req, res) {
       res.redirect('/#/signup');
     } else {
       var myUser = new User({username: req.body.username, password: req.body.password, sessionID: req.sessionID});
-      myUser.save(function(err) { 
-        if (err) { console.log(err) } 
-      });
-      //res.send(200, "Signed Up");
+      myUser.save(function(err) { if (err) { console.log(err) } });
+      console.log('redir');
+      res.send(201, "Succesful post");
     }
   });
 });

@@ -2,5 +2,7 @@
   <input type='text' placeholder="username" ng-model="user.username"/>
   <input type='password' placeholder="password" ng-model="user.password"/>
   <input type='submit' />
+  <div class="help-msg good" ng-show="loginSuccess()">Logged In Succesfully</div>
+  <div class="help-msg bad" ng-show="loginFail()">Login Failed</div>
 </form>
 

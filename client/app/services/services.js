@@ -1,6 +1,13 @@
 angular.module('weighMe.services', []) 
 .factory('Auth', function($http) {
   var signin = function(username, password) {
+    return $http({
+      method: 'POST',
+      url: '/signin',
+      data: { username: username, password: password }
+    }).then(function(resp) {
+      return resp;
+    });
   };
 
   var signout = function() {
@@ -9,7 +16,7 @@ angular.module('weighMe.services', [])
   var signup = function(username, password) {
     return $http({
       method: 'POST',
-      url: '/api/users',
+      url: 'signup',
       data: { username: username, password: password }
     }).then(function(resp) {
       return resp;

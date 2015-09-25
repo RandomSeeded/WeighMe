@@ -7,6 +7,7 @@ var Weight = require('./weightModel.js');
 var User = require('./userModel.js');
 var db = require('./db_conf.js');
 var session = require('express-session');
+var bcrypt = require('bcrypt-nodejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
@@ -36,7 +37,28 @@ app.post('/api/weights', function(req, res) {
   res.status(200).send("Functionality to be added later");
 });
 
-app.post('/api/users', function(req, res) {
+app.post('/signin', function(req, res) {
+  User.findOne({username: req.body.username}, function(err, result) {
+    if (err) { console.log(err); }
+    if (!result) {
+      console.log('user doesnt exist');
+      res.status(401).send("Authentication failed");
+    }
+    else {
+      bcrypt.compare(req.body.password, result.password, function(err, passMatch) {
+        if (err) { console.log(err); }
+        if (passMatch) { 
+          // handle tying records to the appropriate ID here, as well as tying the session to the current user
+          res.status(200).send("Authentication successful");
+        } else {
+          res.status(401).send("Authentication failed");
+        }
+      });
+    }
+  });
+});
+
+app.post('/signup', function(req, res) {
   // Check if user already exists
   User.find({username: req.body.username}, function(err, results) {
     if (err) { console.log('e',err);
